@@ -49,24 +49,24 @@ class SecurityController extends AbstractController
                 
             $mail->send($email);
 
-            $this->addFlash('message', 'Un mail de validation vous a été envoyé');
-
             // envoi mail inscription a l'admin
 
             $email = (new TemplatedEmail())
             -> from('didier@rolland-dev.fr')
             -> to('didier@rolland-de.fr')
             ->subject('Nouvelle inscription')
-            ->htmlTemplate('cv/message2.html.twig') 
+            ->htmlTemplate('security/message2.html.twig') 
             ->context([
-                'email'=> $form->get('email')->getData(),
+                'mail'=> $form->get('email')->getData(),
                 'prenom'=>'CGU ok',
                 'nom'=>'',
                 'message'=>'',
             ]);
             $mail->send($email);
 
-            return $this->redirectToRoute('login');
+            $this->addFlash('message', 'Un mail de validation vous a été envoyé');
+
+            return $this->redirectToRoute('security_login');
         }
 
         return $this->render('security/inscription.html.twig', [

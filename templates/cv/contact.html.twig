@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formContact 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block stylesheets %}
+
+            <link rel="stylesheet" href="/public/css/style.css" >
+
+        {% endblock %}
+
+{% block body %}
+
+    <h1 style="text-align: center; color: white">Contact !</h1>
+
+    {{form_start(formContact)}}
+
+        {{ form_row(formContact.email)}}
+        {{ form_row(formContact.nom)}}
+        {{ form_row(formContact.prenom)}}
+        {{ form_row(formContact.demande)}}
+        <button type="submit" class="btn btn-success">Envoyer</button>
+
+    {{form_end(formContact)}}
+    
+    
+{% endblock %}
+
