@@ -1,0 +1,9 @@
+# Deny from all
+
+RewriteCond %{HTTP_HOST} ^(www.)?rolland-dev.fr$
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /public/$1
+RewriteCond %{HTTP_HOST} ^(www.)?rolland-dev.fr$
+RewriteRule ^(/)?$ public/index.php [L]
